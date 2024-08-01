@@ -1,5 +1,7 @@
 pipeline {
-    agent Docker
+    agent {
+            docker { image 'node:22-slim' }
+        }
 
     stages {
         stage('Install dependencies') {
