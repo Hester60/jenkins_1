@@ -1,24 +1,15 @@
 pipeline {
-    agent {
-            docker { image 'node:22-slim' }
-        }
+    agent { label 'agent-vm2' }
 
     stages {
-        stage('Install dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
         stage('Run tests') {
             steps {
-                sh 'npm run test'
-            }
-        }
-
-        stage('Build project') {
-            steps {
-                sh 'npm run build'
+                script {
+                    docker.image('node:22-slim').inside {
+                        sh 'npm install'
+                        sh 'npm test'
+                    }
+                }
             }
         }
     }
