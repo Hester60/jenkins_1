@@ -5,7 +5,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 script {
-                    docker.image('node:22-slim').inside {
+                    docker.image('node:22-slim').inside('--user root') {
                         sh 'mkdir -p ~/.npm'
                         sh 'npm config set cache ~/.npm'
                         sh 'rm -rf node_modules'
