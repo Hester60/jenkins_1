@@ -1,6 +1,6 @@
 pipeline {
     agent {
-            docker { image 'NodeJS' }
+            docker { image 'node:22-slim' }
         }
 
     stages {
