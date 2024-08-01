@@ -1,5 +1,5 @@
 pipeline {
-    agent NodeJS
+    agent Docker
 
     stages {
         stage('Install dependencies') {
